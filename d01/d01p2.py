@@ -1,0 +1,26 @@
+with open ("input.txt") as f:
+    directions = f.read().strip().split("\n")
+
+dial_value = 50
+clicks = 0
+
+for d in directions:
+    rotation = d[0]
+    value = int(d[1:])
+    full_circles = value // 100
+    prev = dial_value
+    if rotation == "R":
+        dial_value = (dial_value + value) % 100
+        if prev > dial_value:
+            clicks += 1
+    else:
+        dial_value = (dial_value - value) % 100
+        if (prev > dial_value and dial_value == 0) or (prev < dial_value and prev != 0): #PAIN
+            clicks += 1
+    clicks += full_circles
+    if dial_value == 0:
+        continue
+print(dial_value)
+print(clicks)
+
+
