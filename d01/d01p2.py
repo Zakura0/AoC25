@@ -22,8 +22,6 @@ for d in directions:
         if (prev > dial_value and dial_value == 0) or (prev < dial_value and prev != 0): #PAIN
             clicks += 1
     clicks += full_circles
-    if dial_value == 0:
-        continue
 
 print(clicks)
 
