@@ -20,7 +20,7 @@ for d in directions:
     clicks += full_circles
     if dial_value == 0:
         continue
-print(dial_value)
+
 print(clicks)
 
 
