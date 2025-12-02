@@ -9,8 +9,10 @@ result = 0
 
 for (rs, re) in ranges:
     for i in range(rs, re + 1):
-        if len(str(i)) % 2 == 0:
-            if int(str(i)[:(len(str(i))//2)]) == int(str(i)[(len(str(i))//2):]):
+        stri = str(i)
+        vlen = len(stri)
+        if vlen % 2 == 0:
+            if int(stri[:(vlen//2)]) == int(stri[(vlen//2):]):
                 result += i
 
 print(result)
