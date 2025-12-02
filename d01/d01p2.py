@@ -1,7 +1,3 @@
-import time
-
-start_time = time.perf_counter()
-
 with open ("input.txt") as f:
     directions = f.read().strip().split("\n")
 
@@ -24,9 +20,5 @@ for d in directions:
     clicks += full_circles
 
 print(clicks)
-
-end_time = time.perf_counter()
-runtime = end_time - start_time
-print(f"Runtime: {runtime*1000:.3f} ms ({runtime:.6f} seconds)")
 
 
