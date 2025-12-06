@@ -15,7 +15,7 @@ for d in directions:
             clicks += 1
     else:
         dial_value = (dial_value - value) % 100
-        if (prev > dial_value and dial_value == 0) or (prev < dial_value and prev != 0): #PAIN
+        if (prev > dial_value and dial_value == 0) or (prev < dial_value and prev != 0):
             clicks += 1
     clicks += full_circles
 
