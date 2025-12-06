@@ -1,5 +1,5 @@
 with open("input.txt", "r") as f:
-    lines = [l for l in f.read().strip("\n").splitlines()]
+    lines = [l for l in f.read().splitlines()]
 columns = list(zip(*lines))
 
 result = 0
