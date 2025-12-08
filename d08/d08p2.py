@@ -1,6 +1,4 @@
-from math import dist, prod
-import os
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+from math import dist
 
 with open("input.txt", "r") as f:
     boxes = [tuple(map(int, l.split(","))) for l in f.read().strip().splitlines()]
