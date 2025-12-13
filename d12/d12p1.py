@@ -1,8 +1,10 @@
-with open("sample.txt", "r") as f:
+with open("input.txt", "r") as f:
     blocks = f.read().strip().split("\n\n")
 
 shapes = {}
 regions = []
+
+result = 0
 
 for i in range(5):
     lines = blocks[i].split("\n")
@@ -17,8 +19,13 @@ for line in lines:
     values = [int(x) for x in parts[1:]]
     regions.append((height, width, *values))
 
-print(shapes)
-print(regions)
+
+for region in regions:
+    if region[0] * region[1] >= sum(region[2:]) * 9:
+        result += 1
+
+print(result)
+    
 
 
 
