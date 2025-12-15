@@ -6,6 +6,8 @@ regions = []
 
 result = 0
 
+min_area = 9
+
 for i in range(5):
     lines = blocks[i].split("\n")
     grid = [list(line) for line in lines[1:]]
@@ -21,7 +23,7 @@ for line in lines:
 
 
 for region in regions:
-    if region[0] * region[1] >= sum(region[2:]) * 9:
+    if region[0] * region[1] >= sum(region[2:]) * min_area:
         result += 1
 
 print(result)
