@@ -13,6 +13,22 @@ for i in range(len(reds) - 1):
 
 edges.append((reds[0][0], reds[0][1], reds[-1][0], reds[-1][1]))
 
+def is_inside_polygon(x, y, vertices):
+    n = len(vertices)
+    inside = False
+    
+    j = n - 1
+    for i in range(n):
+        xi, yi = vertices[i]
+        xj, yj = vertices[j]
+        
+        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi) + xi):
+            inside = not inside
+        
+        j = i
+    
+    return inside
+
 def intersects(minx, miny, maxx, maxy):
     for e in edges:
         x1, y1, x2, y2 = e
@@ -34,7 +50,11 @@ for i, red1 in enumerate(reds):
         maxx = max(a1, a2)
         miny = min(b1, b2)
         maxy = max(b1, b2)
-        if not intersects(minx, miny, maxx, maxy):
+        
+        center_x = (minx + maxx) / 2
+        center_y = (miny + maxy) / 2
+        
+        if not intersects(minx, miny, maxx, maxy) and is_inside_polygon(center_x, center_y, reds):
             area = (abs(a1 - a2) + 1) * (abs(b1 - b2) + 1)
             valid.append((area, red1, red2))
 
