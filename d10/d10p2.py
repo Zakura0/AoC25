@@ -1,6 +1,7 @@
 import numpy as np
+from scipy.optimize import milp, LinearConstraint
 
-with open("sample.txt", "r") as f:
+with open("input.txt", "r") as f:
     machines = f.read().strip().splitlines()
 
 result = 0
@@ -19,7 +20,12 @@ for i, machine in enumerate(machines):
             b_button[pos] = 1
         b_buttons.append(b_button)
     b_buttons = np.array(b_buttons)
-    print(np.linalg.lstsq(b_buttons.T, v_config, rcond=None)[0])
+    c = np.ones(b_buttons.shape[0])
+    constraints = LinearConstraint(b_buttons.T, v_config, v_config)
+    res = milp(c, integrality=c, constraints=constraints)
+    result += res.fun
+
+print(int(result))
 
 
 
