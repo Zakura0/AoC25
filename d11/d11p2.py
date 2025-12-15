@@ -8,7 +8,7 @@ for connection in connections:
 
 cache = {}
 
-def count_paths(devices, start, fft, dac):
+def count_paths(start, fft, dac):
     if start == "fft":
         fft = True
     if start == "dac":
@@ -24,12 +24,12 @@ def count_paths(devices, start, fft, dac):
     
     total = 0
     for neighbor in devices[start]:
-        total += count_paths(devices, neighbor, fft, dac)
+        total += count_paths(neighbor, fft, dac)
     
     cache[key] = total
     return total
 
-result = count_paths(devices, "svr", False, False)
+result = count_paths("svr", False, False)
 print(result)
 
     
